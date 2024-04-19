@@ -601,7 +601,7 @@ if(DEMANGLE_DIR)
 endif()
 
 ## Set RCCL compile options
-target_compile_options(rccl PRIVATE -parallel-jobs=12)
+target_compile_options(rccl PRIVATE -parallel-jobs=4)
 target_compile_options(rccl PRIVATE -Wno-format-nonliteral)
 target_compile_options(rccl PRIVATE -fgpu-rdc)               # Generate relocatable device code (required for extern __shared__)
 target_compile_options(rccl PRIVATE -fvisibility=hidden)     # Set symbol visibility to hidden by default
@@ -634,7 +634,7 @@ endif()
 target_link_libraries(rccl PRIVATE -fgpu-rdc)               # Required when linking relocatable device code
 
 ## Set RCCL link options
-target_link_options(rccl PRIVATE -parallel-jobs=16)       # Use multiple threads to link
+target_link_options(rccl PRIVATE -parallel-jobs=4)       # Use multiple threads to link
 if(BUILD_ADDRESS_SANITIZER)
   target_link_options(rccl PRIVATE -fuse-ld=lld)
 endif()
